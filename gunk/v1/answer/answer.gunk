@@ -1,0 +1,68 @@
+package answerpb
+
+type AnswerService interface{
+    CreateAnswer(CreateAnswerRequest)CreateAnswerResponse
+	EditAnswer(EditAnswerRequest)EditAnswerResponse
+	UpdateAnswer(UpdateAnswerRequest)UpdateAnswerResponse
+	DeleteAnswer(DeleteAnswerRequest)DeleteAnswerResponse
+	AnswerList(AnswerListRequest)AnswerListResponse
+}
+
+type Answer struct{
+    ID           int    `pb:"1"`
+	UserquizID   int    `pb:"2"`
+	QuestionID   int    `pb:"3"`
+	OptionID     int    `pb:"4"`
+	IsCorrect    bool   `pb:"5"`
+}
+type AnswerList struct{
+	ID  		 int    `pb:"1"`
+	FirstName    string `pb:"2"`
+	LastName     string `pb:"3"`
+	Username     string `pb:"4"`
+	Title 		 string `pb:"5"`
+	OptionName   string `pb:"6"`
+	IsCorrect    bool   `pb:"7"`
+}
+type AnswerListFilter struct{
+	TotalAnswer []AnswerList `pb:"1"`
+	SearchTerm  string       `pb:"2"`
+}
+type AnswerListRequest struct{
+	SearchTerm string `pb:"1"`
+}
+type AnswerListResponse struct{
+    AnswerListFilter AnswerListFilter `pb:"1"`
+}
+
+type CreateAnswerRequest struct{
+    ID           int    `pb:"1"`
+	UserquizID   int    `pb:"2"`
+	QuestionID   int    `pb:"3"`
+	OptionID     int    `pb:"4"`
+}
+type CreateAnswerResponse struct{
+    Answer Answer `pb:"1"`
+}
+type EditAnswerRequest struct{
+	ID  int `pb:"1"`
+}
+type EditAnswerResponse struct{
+	Answer Answer `pb:"1"`
+}
+type UpdateAnswerRequest struct{
+	ID           int    `pb:"1"`
+	UserquizID   int    `pb:"2"`
+	QuestionID   int    `pb:"3"`
+	OptionID     int    `pb:"4"`
+	IsCorrect    bool   `pb:"5"`
+}
+type UpdateAnswerResponse struct{
+
+}
+type DeleteAnswerRequest struct{
+	ID int `pb:"1"`
+}
+type DeleteAnswerResponse struct{
+	
+}

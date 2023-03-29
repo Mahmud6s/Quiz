@@ -1,0 +1,82 @@
+package userpb
+
+type UserService interface {
+	RegisterUser(RegisterUserRequest) RegisterUserResponse
+	RegisterAdmin(RegisterAdminRequest) RegisterAdminResponse
+	Login(LoginRequest) LoginResponse
+	UserList(UserListRequest) UserListResponse
+	UserDelete(UserDeleteRequest) UserDeleteResponse
+	UserEdit(UserEditRequest) UserEditResponse
+	UserUpdate(UserUpdateRequest) UserUpdateResponse
+}
+
+type User struct {
+	ID        int    `pb:"1"`
+	FirstName string `pb:"2"`
+	LastName  string `pb:"3"`
+	Username  string `pb:"4"`
+	Email     string `pb:"5"`
+	IsAdmin   bool   `pb:"6"`
+	IsActive  bool   `pb:"7"`
+}
+
+type RegisterUserRequest struct {
+	FirstName string `pb:"1"`
+	LastName  string `pb:"2"`
+	Username  string `pb:"3"`
+	Email     string `pb:"4"`
+	Password  string `pb:"5"`
+}
+
+type RegisterUserResponse struct {
+	User User `pb:"1"`
+}
+type RegisterAdminRequest struct {
+	FirstName string `pb:"1"`
+	LastName  string `pb:"2"`
+	Username  string `pb:"3"`
+	Email     string `pb:"5"`
+	Password  string `pb:"6"`
+}
+type RegisterAdminResponse struct {
+	User User `pb:"1"`
+}
+type UserListRequest struct {
+}
+
+type UserListResponse struct {
+	User []User `pb:"1"`
+}
+type UserDeleteRequest struct {
+	ID  int  `pb:"1"`
+}
+
+type UserDeleteResponse struct {
+}
+
+type LoginRequest struct {
+	Username string `pb:"1"`
+	Password string `pb:"2"`
+}
+
+type LoginResponse struct {
+	User User `pb:"1"`
+}
+//user edit 
+type UserEditRequest struct {
+	id int `pb:"1"`
+}
+type UserEditResponse struct {
+	User User `pb:"1"`
+}
+type UserUpdateRequest struct {
+	ID        int    `pb:"1"`
+	FirstName string `pb:"2"`
+	LastName  string `pb:"3"`
+	Username  string `pb:"4"`
+	Email     string `pb:"5"`
+	IsAdmin   bool   `pb:"6"`
+	IsActive  bool   `pb:"7"`
+}
+type UserUpdateResponse struct {
+}

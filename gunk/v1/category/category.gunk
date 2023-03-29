@@ -1,0 +1,47 @@
+package categorypb
+type CategoryService interface{
+    Register(RegisterRequest) RegisterResponse
+    CategoryDelete(CategoryDeleteRequest) CategoryDeleteResponse
+    CategoryList(CategoryListRequest) CategoryListResponse
+    CategoryEdit(CategoryEditRequest) CategoryEditResponse
+    CategoryUpdate(CategoryUpdateRequest) CategoryUpdateResponse
+}
+type Category struct{
+    ID           int    `pb:"1"`
+	CategoryName string `pb:"2"`
+}
+type CategoryFilterList struct{
+      TotalCategory []Category `pb:"1"`
+      SearchTerm    string     `pb:"2"`
+}
+type RegisterRequest struct{
+    CategoryName string `pb:"1"`
+}
+type RegisterResponse struct{
+    Category Category `pb:"1"`
+}
+type CategoryDeleteRequest struct{
+    ID int `pb:"1"`
+}
+type CategoryDeleteResponse struct{
+    
+}
+type CategoryListRequest struct{
+    SearchTerm string `pb:"1"`
+}
+type CategoryListResponse struct{
+    CategoryFilterList CategoryFilterList `pb:"1"`
+}
+type CategoryEditRequest struct{
+    id int `pb:"1"`
+}
+type CategoryEditResponse struct{
+    Category Category `pb:"1"`
+}
+type CategoryUpdateRequest struct{
+    ID            int    `pb:"1"`
+	CategoryName  string `pb:"2"`
+}
+type CategoryUpdateResponse struct{
+    
+}

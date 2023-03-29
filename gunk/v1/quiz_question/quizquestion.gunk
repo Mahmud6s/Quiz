@@ -1,0 +1,62 @@
+package qzquestionpb
+
+type QuizQuestionService interface{
+    CreateQuizQuestion(CreateQuizQuestionRequest)CreateQuizQuestionResponse
+    EditQuizQuestion(EditQuizQuestionRequest)EditQuizQuestionResponse
+    DeleteQuizQuestion(DeleteQuizQuestionRequest)DeleteQuizQuestionResponse
+    ListQuizQuestion(ListQuizQuestionRequest)ListQuizQuestionResponse
+    UpdateQuizQuestion(UpdateQuizQuestionRequest)UpdateQuizQuestionResponse
+}
+type QuizQuestion struct{
+    ID         int    `pb:"1"`
+    QuizID     int    `pb:"2"`
+    QuestionID int    `pb:"3"`
+}
+type ListQzQuestion struct{
+    ID           int    `pb:"1"`
+    Title        string `pb:"2"`
+    CategoryName string `pb:"3"`
+    QuizTitle    string `pb:"4"`
+    QuizTime     int    `pb:"5"`
+    SortBy       int    `pb:"6"`
+}
+type QuizQuestionFilterList struct{
+    TotalQuizQuestion []ListQzQuestion `pb:"1"`
+    SearchTerm        string           `pb:"2"`
+    SortBy            int              `pb:"3"`
+}
+type ListQuizQuestionRequest struct{
+    SearchTerm string `pb:"1"`
+    SortBy     int    `pb:"2"`
+}
+type ListQuizQuestionResponse struct{
+    QuizQuestionFilterList QuizQuestionFilterList `pb:"1"`
+}
+type CreateQuizQuestionRequest struct{
+    ID         int    `pb:"1"`
+    QuizID     int    `pb:"2"`
+    QuestionID int    `pb:"3"`
+}
+type CreateQuizQuestionResponse struct{
+    QuizQuestion QuizQuestion `pb:"1"`
+}
+type EditQuizQuestionRequest struct{
+    ID   int  `pb:"1"`
+}
+type EditQuizQuestionResponse struct{
+    QuizQuestion QuizQuestion `pb:"1"`
+}
+type DeleteQuizQuestionRequest struct{
+    ID int `pb:"1"`
+}
+type DeleteQuizQuestionResponse struct{
+    
+}
+type UpdateQuizQuestionRequest struct{
+    ID         int    `pb:"1"`
+    QuizID     int    `pb:"2"`
+    QuestionID int    `pb:"3"`
+}
+type UpdateQuizQuestionResponse struct{
+    
+}

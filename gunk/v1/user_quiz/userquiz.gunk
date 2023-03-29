@@ -1,0 +1,58 @@
+package userquizpb
+
+type UserQuizService interface{
+    CreateUserQuiz(CreateUserQuizRequest) CreateUserQuizResponse
+    EditUserQuiz(EditUserQuizRequest) EditUserQuizResponse
+    DeleteUserQuiz(DeleteUserQuizRequest) DeleteUserQuizResponse
+    UpdateUserQuiz(UpdateUserQuizRequest) UpdateUserQuizResponse
+    ListUserQuiz(ListUserQuizRequest) ListUserQuizResponse
+}
+type UserQuiz struct{
+    ID             int `pb:"1"`
+    UserID         int `pb:"2"`
+    QuizQuestionID int `pb:"3"`
+}
+type ListUserQuiz struct {
+    FirstName string `pb:"1"`
+    LastName  string `pb:"2"`
+    Username  string `pb:"3"`
+    Title     string `pb:"4"`
+    QuizTitle string `pb:"5"`
+ }
+ type ListUserQuizFilter struct {
+    TotalUserQuiz []ListUserQuiz `pb:"1"`
+    SearchTerm    string         `pb:"2"`
+ }
+ type ListUserQuizRequest struct{
+    SearchTerm string `pb:"1"`
+ }
+ type ListUserQuizResponse struct {
+    ListUserQuizFilter ListUserQuizFilter `pb:"1"`
+ }
+type CreateUserQuizRequest struct{
+    UserID         int `pb:"1"`
+    QuizQuestionID int `pb:"2"`
+}
+type CreateUserQuizResponse struct{
+    UserQuiz UserQuiz `pb:"1"`
+}
+type EditUserQuizRequest struct{
+    ID int `pb:"1"`
+}
+type EditUserQuizResponse struct{
+    UserQuiz UserQuiz `pb:"1"`
+}
+type DeleteUserQuizRequest struct{
+    ID int `pb:"1"`
+}
+type DeleteUserQuizResponse struct{
+    
+}
+type UpdateUserQuizRequest struct{
+    ID             int `pb:"1"`
+    UserID         int `pb:"2"`
+    QuizQuestionID int `pb:"3"`
+}
+type UpdateUserQuizResponse struct{
+    
+}

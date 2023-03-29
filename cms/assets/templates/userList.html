@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+{{range.Users}}
+<tbody>
+  
+    <tr class="bg-white">
+        <td class="border px-4 py-2">{{ .ID}}</td>
+        <td class="border px-4 py-2">{{ .FirstName}}</td>
+        <td class="border px-4 py-2">{{ .LastName}}</td>
+        <td class="border px-4 py-2">{{ .Email}}</td>
+        <td class="border px-4 py-2">{{ .Username}}</td>
+        <td class="border px-4 py-2">{{ .IsAdmin}}</td>
+        <td class="border px-4 py-2">{{ .IsActive}}</td>
+
+        <td class="border px-4 py-2">
+         
+        </td>
+      </tr>  
+  </tbody>
+  {{end}}
+</table>
+</body>
+
+{{ template "footer.html"}}

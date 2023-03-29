@@ -1,0 +1,56 @@
+package optionpb
+
+type OptionService interface{
+    CreateOption(CreateOptionRequest)CreateOptionResponse
+    DeleteOption(DeleteOptionRequest)DeleteOptionResponse
+    ListOption(ListOptionRequest)ListOptionResponse
+    EditOption(EditOptionRequest)EditOptionResponse
+    UpdateOption(UpdateOptionRequest)UpdateOptionResponse
+}
+type Option struct{
+      ID           int    `pb:"1"`
+	  QuestionID   int    `pb:"2"`
+	  OptionName   string `pb:"3"`
+	  IsCorrect    bool   `pb:"4"`
+}
+type OptionFilterList struct{
+	TotalOption []Option `pb:"1"`
+	SearchTerm  string   `pb:"2"`
+}
+type ListOptionRequest struct{
+	SearchTerm string `pb:"1"`
+}
+type ListOptionResponse struct{
+	OptionFilterList OptionFilterList `pb:"1"`
+}
+type CreateOptionRequest struct{
+      ID           int    `pb:"1"`
+	  QuestionID   int    `pb:"2"`
+	  OptionName   string `pb:"3"`
+}
+type CreateOptionResponse struct{
+      Option Option `pb:"1"`
+}
+type DeleteOptionRequest struct{
+	ID int `pb:"1"`
+}
+type DeleteOptionResponse struct{
+
+}
+
+
+type EditOptionRequest struct{
+	id int `pb:"1"`
+}
+type EditOptionResponse struct{
+	Option Option `pb:"1"`
+}
+type UpdateOptionRequest struct{
+	 ID           int    `pb:"1"`
+	 QuestionID   int    `pb:"2"`
+	 OptionName   string `pb:"3"`
+	 IsCorrect    bool   `pb:"4"`
+}
+type UpdateOptionResponse struct{
+	
+}

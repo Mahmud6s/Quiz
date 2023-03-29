@@ -1,0 +1,42 @@
+{{template "header.html"}}
+   
+<div class="content">
+        
+    <form action="/register" method="POST">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <label for="first_name">First Name</label>
+        <input id="first_name" type="text" name="FirstName" value="{{.RegisterUser.FirstName}}">
+        {{ with (index .FormError "FirstName") }}
+        <p style="color: red;">{{.}}</p>
+        {{end}}
+        <br>
+
+        <label for="last_name">Last Name</label>
+        <input id="last_name" type="text" name="LastName" value="{{.RegisterUser.LastName}}">
+        {{ with (index .FormError "LastName") }}
+        <p style="color: red;">{{.}}</p>
+        {{end}}
+        <br>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="Email" value="{{.RegisterUser.Email}}">
+        {{ with (index .FormError "Email") }}
+        <p style="color: red;">{{.}}</p>
+        {{end}}
+        <br>
+
+        <label for="username">Username</label>
+        <input id="username" type="text" name="Username" value="{{ .RegisterUser.Username }}">
+        <p style="color: red;">{{ .FormError.Username }}</p>
+        <br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="Password" value="{{ .RegisterUser.Password }}">
+        <p style="color: red;">{{ .FormError.Password }}</p>
+        <br>
+
+        <button id="register" type="submit">Register</button>
+    </form>
+</div>
+
+{{ template "footer.html"}}
